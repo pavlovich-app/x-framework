@@ -1,0 +1,24 @@
+{
+    "name": "x/framework",
+    "description": "PHP X-Framework",
+    "keywords": [
+        "PHP X-Framework",
+        "PHP 8 Framework"
+    ],
+    "authors": [
+        {
+            "name": "Oleksandr P.",
+            "email": "pavlovych.dev@gmail.com"
+        }
+    ],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "x\\": "src/"
+        }
+    }
+}
