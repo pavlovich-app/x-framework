@@ -4,15 +4,17 @@ namespace x;
 
 final class Application
 {
+    private $config = [];
     private $routing = [];
 
     /**
      * Application constructor.
-     * @param array $routing
+     * @param array $settings
      */
-    public function __construct(array $routing = [])
+    public function __construct(array $settings = [])
     {
-        $this->routing = $routing;
+        $this->config = $settings['config'];
+        $this->routing = $settings['routing'];
     }
 
     public function run(): void
@@ -35,8 +37,10 @@ final class Application
         $uri = array_shift($uri);
         if (array_key_exists($uri, $this->routing)) {
             $route = explode(':', $this->routing[$uri]);
+            $baseNamespace = $this->config['app_namespace'];
 
-            $controller = ('\\controllers\\' . ucfirst($route[0]) . 'Controller');
+            $controller = $baseNamespace . '\\controllers\\' . ucfirst($route[0]) . 'Controller';
+
             $action = ($route[1] . 'Action');
 
             return (new $controller())->{$action}();
