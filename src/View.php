@@ -5,7 +5,10 @@ namespace x;
 trait View
 {
     protected $layout = 'layouts:default';
-    protected $title = null;
+
+    protected string|null $title = null;
+    protected string|null $description = null;
+    protected string|null $keywords = null;
 
     /**
      * @param string $path

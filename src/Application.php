@@ -43,7 +43,7 @@ final class Application
 
             $action = ($route[1] . 'Action');
 
-            return (new $controller())->{$action}();
+            return (new $controller($route))->{$action}();
         }
 
         throw new \Exception('Page not found', 404);
